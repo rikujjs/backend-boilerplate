@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha -R landing tests/**/*.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "migrate": "knex migrate:latest"
   },
   "license": "MIT",
   "dependencies": {
