@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
   return knex.schema
-  .createTable('User', function (table) {
+  .createTable('user', function (table) {
     table.bigincrements('id').primary();
     table.string('email');
     table.string('password');
@@ -9,5 +9,5 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return knex.schema
-    .dropTableIfExists('User')
+    .dropTableIfExists('user')
 };

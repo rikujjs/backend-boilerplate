@@ -1,8 +1,22 @@
 module.exports = {
   development: {
-    client: 'sqlite3',
+    client: 'postgresql',
     connection: {
-      filename: './backend-boilerplate.db'
+      database: 'backend-boilerplate-db'
+    },
+    pool: {
+      min: 2,
+      max: 10
     }
-   }
+  },
+  test: {
+    client: 'postgresql',
+    connection: {
+      database: 'backend-boilerplate-test'
+    },
+    pool: {
+      min: 2,
+      max: 10
+    }
+  }
 };

@@ -4,7 +4,7 @@
   "description": "A good backend boilerplate",
   "main": "app.js",
   "scripts": {
-    "test": "mocha -R landing tests/**/*.js",
+    "test": "gulp test",
     "start": "node app.js",
     "migrate": "knex migrate:latest"
   },
@@ -13,12 +13,20 @@
     "body-parser": "^1.14.2",
     "express": "^4.13.3",
     "knex": "^0.9.0",
+    "lodash": "^3.10.1",
     "morgan": "^1.6.1",
     "objection": "^0.4.0-rc.3",
+    "pg": "^4.4.3",
     "sqlite3": "^3.1.1"
   },
   "devDependencies": {
     "chai": "^3.4.1",
-    "mocha": "^2.3.4"
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-util": "^3.0.7",
+    "knex-cleaner": "^1.1.1",
+    "mocha": "^2.3.4",
+    "run-sequence": "^1.1.5",
+    "supertest": "^1.1.0"
   }
 }

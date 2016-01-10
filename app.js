@@ -10,10 +10,13 @@ const fs = require('fs');
 
 const app = express()
   .use(bodyParser.json())
-  .use(morgan('dev'))
   .set('json spaces', 2);
 
-const knex = Knex(knexConfig.development);
+if (app.get('env') !== 'test') {
+  app.use(morgan('dev'));
+}
+
+const knex = Knex(knexConfig[app.get('env')]);
 Model.knex(knex);
 
 const routeFiles = fs.readdirSync(__dirname + '/routes');
@@ -22,6 +25,8 @@ routeFiles.forEach((file) => {
   routeFile(app);
 });
 
-const server = app.listen(3000, function() {
-  console.log("Server running! port: %s!", server.address().port);
+const server = app.listen(3000, () => {
+  console.log(`Server running on port ${server.address().port} using "${app.get('env')}" mode!`);
 });
+
+module.exports = app;

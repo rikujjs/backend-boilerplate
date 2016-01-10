@@ -5,7 +5,7 @@ const Model = require('objection').Model;
 class User extends Model {
 
   static get tableName() {
-    return 'User';
+    return 'user';
   }
 
   static get jsonSchema () {
