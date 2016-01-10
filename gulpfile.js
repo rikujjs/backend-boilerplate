@@ -6,7 +6,15 @@ const gulp = require('gulp')
   , pg = require('pg')
   , knexConfig = require('./knexfile')
   , Knex = require('knex')
-  , mocha = require('gulp-mocha');
+  , mocha = require('gulp-mocha')
+  , eslint = require('gulp-eslint');
+
+gulp.task('lint', () => {
+  return gulp.src(['**/*.js', '!node_modules/**'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
 
 gulp.task('resetTestDB', (done) => {
   const dbName = knexConfig.test.connection.database;
