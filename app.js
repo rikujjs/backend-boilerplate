@@ -22,6 +22,16 @@ routeFiles.forEach((file) => {
   routeFile(app);
 });
 
-const server = app.listen(3000, function() {
+app.use((err, req, res, next) => {
+  if(err) {
+    res.status(err.statusCode || err.status || 500).send(err.data || err.message || {});
+  } else {
+    next();
+  }
+});
+
+const server = app.listen(3000, () => {
   console.log("Server running! port: %s!", server.address().port);
 });
+
+module.exports = app;
