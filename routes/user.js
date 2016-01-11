@@ -2,7 +2,7 @@
 
 const User = require('../models/User');
 
-module.exports = function (app) {
+module.exports = (app) => {
   app.post('/api/v1/users', (req, res) => {
     User
       .query()
@@ -21,8 +21,8 @@ module.exports = function (app) {
       .query()
       .findById(req.params.id)
       .then((user) => {
-        if(!user) {
-          res.status(404).send({message: 'User not found!'});
+        if (!user) {
+          res.status(404).send({ message: 'User not found!' });
         } else {
           res.send(user);
         }
@@ -35,4 +35,4 @@ module.exports = function (app) {
       .patchAndFetchById(req.params.id, req.body)
       .then((user) => res.send(user));
   });
-}
+};

@@ -1,13 +1,13 @@
 'use strict';
 
-const gulp = require('gulp')
-  , gutil = require('gulp-util')
-  , runSequence = require('run-sequence')
-  , pg = require('pg')
-  , knexConfig = require('./knexfile')
-  , Knex = require('knex')
-  , mocha = require('gulp-mocha')
-  , eslint = require('gulp-eslint');
+const gulp = require('gulp');
+const gutil = require('gulp-util');
+const runSequence = require('run-sequence');
+const pg = require('pg');
+const knexConfig = require('./knexfile');
+const Knex = require('knex');
+const mocha = require('gulp-mocha');
+const eslint = require('gulp-eslint');
 
 gulp.task('lint', () => {
   return gulp.src(['**/*.js', '!node_modules/**'])
@@ -57,7 +57,7 @@ gulp.task('migrate', () => {
 
 gulp.task('runTests', () => {
   return gulp.src(['tests/**/*.js'])
-    .pipe(mocha({ reporter: 'spec'}))
+    .pipe(mocha({ reporter: 'spec' }))
     .once('error', (err) => {
       gutil.log(gutil.colors.red(`error while running tests!`));
       process.exit(1);

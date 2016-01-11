@@ -1,13 +1,13 @@
-exports.up = function(knex, Promise) {
+exports.up = (knex, Promise) => {
   return knex.schema
-  .createTable('user', function (table) {
+  .createTable('user',(table) => {
     table.bigincrements('id').primary();
     table.string('email');
     table.string('password');
   });
 };
 
-exports.down = function(knex, Promise) {
+exports.down = (knex, Promise) => {
   return knex.schema
-    .dropTableIfExists('user')
+    .dropTableIfExists('user');
 };

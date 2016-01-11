@@ -19,14 +19,14 @@ if (app.get('env') !== 'test') {
 const knex = Knex(knexConfig[app.get('env')]);
 Model.knex(knex);
 
-const routeFiles = fs.readdirSync(__dirname + '/routes');
+const routeFiles = fs.readdirSync(`${__dirname}/routes`);
 routeFiles.forEach((file) => {
-  let routeFile = require('./routes/' + file);
+  const routeFile = require(`./routes/${file}`);
   routeFile(app);
 });
 
 const server = app.listen(3000, () => {
-  console.log(`Server running on port ${server.address().port} using "${app.get('env')}" mode!`);
+  console.log(`Server running on port ${server.address().port} using \"${app.get('env')}\" mode!`);
 });
 
 module.exports = app;

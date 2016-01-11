@@ -1,20 +1,20 @@
 'use strict';
 
-const expect = require('chai').expect
-  , supertest = require('supertest')
-  , app = require('../../app')
-  , Knex = require('knex')
-  , knexConfig = require('../../knexfile').test
-  , _ = require('lodash')
+const expect = require('chai').expect;
+const supertest = require('supertest');
+const app = require('../../app');
+const Knex = require('knex');
+const knexConfig = require('../../knexfile').test;
+const _ = require('lodash');
 
 const request = supertest(app);
 
-describe('Users API', function() {
-  describe('GET', function() {
-    it('should get empty array with no users', function(done) {
+describe('Users API',() => {
+  describe('GET',() => {
+    it('should get empty array with no users', (done) => {
       request
         .get('/api/v1/users')
-        .end(function(err, res) {
+        .end((err, res) => {
           expect(_.isArray(res.body)).to.eql(true);
           done();
         });

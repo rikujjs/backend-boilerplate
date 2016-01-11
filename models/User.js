@@ -16,8 +16,8 @@ class User extends Model {
       properties: {
         id: { type: 'integer' },
         email: { type: 'string', minLength: 1, maxLength: 255 },
-        password: { type: 'string' }
-      }
+        password: { type: 'string' },
+      },
     };
   }
 }
